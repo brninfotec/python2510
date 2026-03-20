@@ -6,6 +6,10 @@ import os
 from fastapi.staticfiles import StaticFiles
 import jwt
 import bcrypt
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 app=FastAPI()
 SECRET_KEY="brn"
@@ -14,7 +18,7 @@ app.mount("/uploads",StaticFiles(directory="uploads"),name="uploads")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"]
 )
@@ -31,7 +35,8 @@ class User(BaseModel):
 
 def check_connection():
     try:
-        client = MongoClient("mongodb+srv://vemulajyothi24_db_user:pythonbatch@pythonbatch.xpkdkez.mongodb.net/?appName=pythonbatch")
+        mongo_url = os.getenv("MONGO_URL")
+        client = MongoClient(mongo_url)
 
         db = client["post"]
         collection = db["postUsers"]

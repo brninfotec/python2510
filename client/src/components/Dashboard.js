@@ -17,7 +17,7 @@ function Dashboard() {
         body:dataToSend
       }
 
-      let JSONData = await fetch("http://localhost:8000/deleteProfile",reqOptions);
+      let JSONData = await fetch("/deleteProfile",reqOptions);
 
         let JSOData = await JSONData.json();
         console.log(JSOData)
@@ -34,7 +34,7 @@ function Dashboard() {
       <h1>{userDetails.firstName} {userDetails.lastName}</h1>
       <h3>{userDetails.age}</h3>
       <h3>{userDetails.mobileNo}</h3>
-      <img src={`http://localhost:8000/${userDetails.profilePic}`} alt=''></img>
+      <img src={`/${userDetails.profilePic}`} alt=''></img>
     </div>
   )
 }

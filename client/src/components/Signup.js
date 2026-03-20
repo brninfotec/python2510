@@ -38,7 +38,7 @@ function Signup() {
         headers:myHeaders
      }
 
-      let JSONData = await fetch("http://localhost:8000/signupJSON",reqOptions);
+      let JSONData = await fetch("/signupJSON",reqOptions);
       let JSOData = await JSONData.json();
 
       console.log(JSOData);
@@ -64,7 +64,7 @@ function Signup() {
             headers:myHeaders
         }
 
-        let JSONData = await fetch("http://localhost:8000/signupURL",reqOptions);
+        let JSONData = await fetch("/signupURL",reqOptions);
 
         let JSOData = await JSONData.json();
         console.log(JSOData)
@@ -90,7 +90,7 @@ function Signup() {
             body:dataToSend,
           }
 
-        let JSONData = await fetch("http://localhost:8000/signupFD",reqOptions);
+        let JSONData = await fetch("/signupFD",reqOptions);
 
         let JSOData = await JSONData.json();
         console.log(JSOData)
