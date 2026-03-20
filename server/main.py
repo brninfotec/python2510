@@ -14,6 +14,8 @@ load_dotenv()
 app=FastAPI()
 SECRET_KEY="brn"
 
+os.makedirs("uploads", exist_ok=True)
+
 app.mount("/uploads",StaticFiles(directory="uploads"),name="uploads")
 
 app.add_middleware(
